@@ -14,8 +14,6 @@
                                id="firstNameId"
                                type="text"
                                placeholder="First Name (required)"
-                               required
-                               minlength="3"
                                formControlName="firstName"/>
                         <span class="help-block" *ngIf="(userForm.get('firstName').touched || userForm.get('firstName').dirty) && userForm.get('firstName').errors">
                             <span *ngIf="userForm.get('firstName').hasError('required')">Please enter your first name.</span>
@@ -32,8 +30,6 @@
                                id="lastNameId"
                                type="text"
                                placeholder="Last Name (required)"
-                               required
-                               maxlength="50"
                                formControlName="lastName"/>
                         <span class="help-block" *ngIf="(userForm.get('lastName').touched || userForm.get('lastName').dirty) && userForm.get('lastName').errors">
                           <span *ngIf="userForm.get('lastName').hasError('required')">Please enter your last name.</span>
@@ -49,9 +45,7 @@
                         <input class="form-control"
                                id="emailId"
                                type="email"
-                               placeholder="Email (required)"
-                               required
-                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+"
+                               placeholder={{placeholder.email}}
                                formControlName="email"/>
                         <span class="help-block" *ngIf="(userForm.get('email').touched || userForm.get('email').dirty) && userForm.get('email').errors">
                             <span *ngIf="userForm.get('email').hasError('required')">Please enter your email address.</span>
@@ -61,7 +55,44 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+              <div class="form-group"
+                   [ngClass]="{'has-error': !userForm.get('phone').valid }">
+                <label class="col-md-2 control-label"
+                       for="phoneId">Phone</label>
+
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="phoneId"
+                         type="tel"
+                         placeholder={{placeholder.phone}}
+                         formControlName="phone" />
+                  <span class="help-block" *ngIf="userForm.get('phone').errors">
+                            <span *ngIf="userForm.get('phone').hasError('required')">
+                                Please enter your phone number.
+                            </span>
+                        </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-2 control-label">Send Notifications</label>
+                <div class="col-md-8">
+                  <label class="radio-inline">
+                    <input type="radio"
+                           value="email"
+                           formControlName="notification"
+                           (click)="onSetNotification('email')">Email
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio"
+                           value="text"
+                           formControlName="notification"
+                           (click)="onSetNotification('text')">Text
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
                     <div class="col-md-offset-1 col-md-8 checkbox" >
                         <label>
                             <input id="sendProductsId"
