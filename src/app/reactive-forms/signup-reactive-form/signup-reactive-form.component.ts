@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 import { User } from './../../models/user';
 
+import { CustomValidators } from './../../validators';
+
 @Component({
   selector: 'app-signup-reactive-form',
   templateUrl: './signup-reactive-form.component.html',
@@ -74,6 +76,7 @@ export class SignupReactiveFormComponent implements OnInit {
       sendProducts: true,
       phone: '',
       notification: 'email',
+      serviceLevel: ['', CustomValidators.serviceLevel],
     });
   }
 
