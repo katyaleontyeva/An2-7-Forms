@@ -25,8 +25,8 @@ export class SignupReactiveFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.buildForm();
-    this.createForm();
+    this.buildForm();
+    // this.createForm();
 
   }
 
@@ -97,7 +97,8 @@ export class SignupReactiveFormComponent implements OnInit {
       sendProducts: true,
       phone: '',
       notification: 'email',
-      serviceLevel: ['', CustomValidators.serviceLevel],
+      // serviceLevel: ['', CustomValidators.serviceLevel],
+      serviceLevel: ['', CustomValidators.serviceLevelRange(1, 3)],
     });
   }
 
