@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ServiceLevelDirective } from '.';
+
+import { ServiceLevelDirective, AsyncEmailValidatorDirective } from '.';
 
 @NgModule({
   declarations: [
-    ServiceLevelDirective
+    ServiceLevelDirective,
+    AsyncEmailValidatorDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ServiceLevelDirective
+    ServiceLevelDirective,
+    AsyncEmailValidatorDirective
   ]
 })
 export class ValidatorsModule { }
